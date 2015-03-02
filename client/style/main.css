@@ -3,15 +3,15 @@
       }
       body{
         background: #ffa500 !important;
-        scrollbar-base-color:#CCAF7A;
+        overflow-x: hidden;
+        overflow-y: auto: 
       }
       .room{
         background: #fff;
+        height:600px;
       }
       .user_list{
         border-right: 2px solid #CCAF7A;
-        height: 600px;
-        overflow-y:auto;
       }
       .chat_room{
         overflow-y:auto;
@@ -37,6 +37,9 @@
         border-width: 0 0 1px 0;
         border-radius: 20px;
       }
+      hr{
+        margin:0 !important;
+      }
       
       .user_list ul { padding-left:20px; list-style:none; }
 
@@ -54,20 +57,27 @@
       }
       .chat_message li img {
         float: left;
-        margin: 0 15px 0 0;
-        width: 60px;
-        height: 60px;
+        margin: auto;
+        width: 45px;
+        height: 45px;
       }
        
       .chat_message li p {
         font: 200 12px/1.5 Georgia, Times New Roman, serif;
+         word-wrap: break-word;
+         padding: 2px;
+      }
+
+      .chat_message li .message_text{
+        padding: 20px;
       }
        
       .chat_message li {
-        padding: 10px;
-        overflow: auto;
+        padding: 1px;
         background: #ffe4b2;
-        margin:10px 0;
+        margin:5px 0;
+        border: 1px solid grey;
+        box-shadow: 2px 2px 2px #888
       }
        
       .chat_message li:hover {
@@ -88,4 +98,62 @@
   }
   [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+.user_message{
+  float:left;
+  border:1px solid #CCAF7A;
+  box-shadow: 2px 2px 2px #888;
+  margin-right: 10px
+}
+.user_message p{
+  word-wrap: break-word;
+}
+@media(max-width:767px){
+     .room{
+        background: #fff;
+        height:450px;
+        margin-top:10px;
+      }
+    .chat_room{
+        height: 300px !important; 
+      }
+    .user_list{
+        height: 350px;
+      }
+    .chat_message li img {
+      width:30px;
+      height: 30px;
+    } 
+    .chat_message li p {
+        font: 200 12px/2.0 Georgia, Times New Roman, serif;
+        word-wrap: break-word;
+      }
+}
+@media(min-width:768px){
+    .room{
+        height:500px;
+        margin-top:30px;
+        }
+    .chat_room{
+        height: 350px !important; 
+      }
+}
+@media(min-width:992px){
+    .room{
+        height:500px;
+        margin-top:50px;
+        }
+    .chat_room{
+        height: 350px !important; 
+      }
+
+}
+@media(min-width:1200px){
+  .room{
+        height:600px;
+        margin-top:50px;
+        }
+    .chat_room{
+        height: 450px !important; 
+      }
 }
