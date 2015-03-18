@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="bower_components/ng-emoticons/src/ng-emoticons.css">  
   </head>
   <body ng-controller="mainController" ng-init="clickToOpen()">
+    
+    <div id="loader-wrapper">
+      <div id="loader">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>   
+    </div>
+
     <div class="container room"> 
       <div class="row" >
           <div class="hidden-xs col-sm-3 user_list">
@@ -23,7 +30,7 @@
             <hr class="ray">
             <div class="col-xs-12 chat_room" ng-cloak scroll-glue-bottom>
               <ul id="users" ng-cloak>
-                <li ng-repeat="user in users">
+                <li ng-repeat="user in users" class="animate">
                     <img ng-src="{{getImageSource(user.gender)}}" alt="" width="50px" height="50px">
                     <span >{{user.name}} <small>({{user.email}})</small></span>
                 </li>
@@ -43,7 +50,7 @@
             <hr class="ray">
             <div class="col-xs-12 chat_room" ng-cloak scroll-glue-bottom>
               <ul id="messages" class="chat_message" class="col-xs-12">
-                <li ng-repeat="message in messages">
+                <li ng-repeat="message in messages" class="animate">
                 <div class="user_message">
                   <img ng-src="{{getImageSource(message.user.gender)}}" alt="">
                   <p><b>{{message.user.name}}</b></p>

@@ -1,4 +1,9 @@
 define(['angular','socketio'],function(angular,io){
+  
+  angular.module('app').run(function(){
+    $('body').addClass('loaded');
+  });
+
 angular.module('app').controller('mainController', ['$scope','$rootScope','ngDialog','socket',function ($scope,$rootScope,ngDialog,socket) {
        $scope.profileImage = {
          backgroundImage: 'url(../../images/Male.png)'

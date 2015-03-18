@@ -12,7 +12,8 @@ define([
 	'ngDialog',
 	'angular-scroll-glue',
 	'angular-sanitize',
-	'ng-emoticons'
+	'ng-emoticons',
+	'angular-animate'
 	],function(angular,domReady,io){
 	domReady(function (document) {
 			angular.bootstrap(document, ['app']);

@@ -9,6 +9,7 @@ require.config({
     'angular-scroll-glue':'../bower_components/angular-scroll-glue/src/scrollglue',
     'angular-sanitize':'../bower_components/angular-sanitize/angular-sanitize',
     'ng-emoticons':'../bower_components/ng-emoticons/src/ng-emoticons',
+    'angular-animate':'../bower_components/angular-animate/angular-animate.min'
       
 
   },
@@ -17,6 +18,7 @@ require.config({
     'bootstrap':{deps:['jquery']},
     'socketio': {exports: 'io'},
     'ngDialog':{deps:['angular']},
+    'angular-animate':{deps:['angular']},
     'angular-scroll-glue':{deps:['angular']},
     'angular-sanitize':{deps:['angular']},
     'ng-emoticons':{deps:['angular','angular-sanitize']}  
