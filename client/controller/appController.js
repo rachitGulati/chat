@@ -4,12 +4,13 @@ define(['angular','socketio'],function(angular,io){
     $('body').addClass('loaded');
   });
 
-angular.module('app').controller('mainController', ['$scope','$rootScope','ngDialog','socket',function ($scope,$rootScope,ngDialog,socket) {
+angular.module('app').controller('mainController', ['$scope','$rootScope','ngDialog','socket','$http',function ($scope,$rootScope,ngDialog,socket,$http) {
        $scope.profileImage = {
          backgroundImage: 'url(../../images/Male.png)'
       };
        $scope.messages=[];
        $scope.users=[];
+       $scope.keyBinded=false;
       $scope.getImageSource=function(gender){
           var val;
           if(gender=="Male"){
@@ -22,7 +23,6 @@ angular.module('app').controller('mainController', ['$scope','$rootScope','ngDia
           return val;
       }
         socket.on('chat message', function(message_body){
-          console.log("chat input");
         	$scope.messages.push(message_body);
           	
         });
@@ -36,15 +36,29 @@ angular.module('app').controller('mainController', ['$scope','$rootScope','ngDia
           $scope.newMessage='';
           event.preventDefault();
         };
-     	  
+
+     	  $scope.getKey=function(user){
+          $scope.keyBinded=true;
+          $http.post("/getKey",user).success(function(data){
+            $scope.keyBinded=true;
+          }).error(function(data){
+
+          });   
+        }
+
 			$scope.joinChat=function(user){
-        $rootScope.user=user;
-				console.log("joinChat"+user.name);
-				socket.emit('join',user);
+        $http.post("/join",user).success(function(data){
+            socket.emit('join',user);
+            $rootScope.user=user;
+            $scope.closeThisDialog("HEllo");
+          }).error(function(data, status, headers, config){
+              if(status=="401"){
+                $scope.invalidKey=true;
+              }
+          });
 			}
 
 		socket.on('userUpdate', function(users){
-			console.log(users);
           $scope.users=users;
           /*$('#users').append($('<li class="others col-sm-8">').text(person.name));*/
         });
@@ -59,7 +73,6 @@ angular.module('app').controller('mainController', ['$scope','$rootScope','ngDia
           };
       	$scope.$watch('user.gender', function(value) {
        		if (typeof value != 'undefined'){
-       			console.log(value);
        			if(value=="Male"){
        				$scope.profileImage.backgroundImage='url(../../images/Male.png)';
        			}else if(value=="Female"){

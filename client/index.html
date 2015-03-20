@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Chat Now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
@@ -51,15 +53,22 @@
             <div class="col-xs-12 chat_room" ng-cloak scroll-glue-bottom>
               <ul id="messages" class="chat_message" class="col-xs-12">
                 <li ng-repeat="message in messages" class="animate">
-                <div class="user_message">
-                  <img ng-src="{{getImageSource(message.user.gender)}}" alt="">
-                  <p><b>{{message.user.name}}</b></p>
+                <div style="position:relative">
+                  <div ng-if="user.email !==  message.user.email" class="smart-collaboration-icon">
+                     <i class="fa fa-bullhorn fa-lg"></i>
+                  </div>
+                  <div class="user_message">
+                    <img ng-src="{{getImageSource(message.user.gender)}}" alt="">
+                    <p><b>{{message.user.name}}</b></p>
+                   </div>
+                   <p class="pull-right">{{timestampToDate(message.timestamp)}}</p>
+                   <p class="message_text" ng-bind-html="message.messages | emoticons"></p>
+                   <div class="clearfix"></div>
+                   <div ng-if=  "user.email === message.user.email" class="smart-collaboration-icon-right">
+                     <i class="fa fa-bullhorn icon-flipped fa-lg"></i>
+                  </div>
                  </div>
-                 <p class="pull-right">{{timestampToDate(message.timestamp)}}</p>
-                 <p class="message_text" ng-bind-html="message.messages | emoticons"></p>
-                 <div class="clearfix"></div>
                 </li>
-                <div class="clearfix"></div>
               </ul>
 
             </div>

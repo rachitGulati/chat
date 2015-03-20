@@ -4,13 +4,21 @@
 		</div>
 		<div class="col-xs-6">
 		<form name="joinForm" novalidate ng-init="user.gender='Male'">
-			<input class="form-control"type="text" placeholder="Nick Name" name="name" ng-model="user.name" required>
+			<input class="form-control"type="text" placeholder="Nick Name" name="name" ng-model="user.name" required ng-disabled="keyBinded">
 			<br>
-			<input type="email" class="form-control"placeholder="rachit@hello.com" name="email" ng-model="user.email" required><br>
-			<input type="radio" name="gender" value="Male" ng-checked="true" ng-model="user.gender">Male<br>
-			<input type="radio" name="gender" value="Female" ng-model="user.gender">Female<br>
-			<input type="radio" name="gender" value="Anonymous" ng-model="user.gender">Anonymous<br>
-			<input type="submit" class="btn btn-warning" value="Join" ng-disabled="joinForm.$invalid" ng-click="closeThisDialog();joinChat(user)">
+			<input type="email" class="form-control"placeholder="rachit@hello.com" name="email" ng-model="user.email" required ng-disabled="keyBinded"><br>
+			<input type="radio" name="gender" value="Male" ng-checked="true" ng-model="user.gender" ng-disabled="keyBinded">Male<br>
+			<input type="radio" name="gender" value="Female" ng-model="user.gender" ng-disabled="keyBinded">Female<br>
+			<input type="radio" name="gender" value="Anonymous" ng-model="user.gender" ng-disabled="keyBinded">Anonymous<br>
+			<input type="submit" class="btn btn-warning" value="GetKey" ng-disabled="joinForm.$invalid" ng-click="getKey(user)" ng-show="!keyBinded">
+		</form>
+		<form name="joinKey" ng-show="keyBinded">
+				<p>Check mail for key</p>
+				
+				<input type="text" class="form-control" placeholder="Enter Key" name="key" ng-model="user.key" required><br>
+				
+				<input type="submit" class="btn btn-warning" value="Join" ng-disabled="joinKey.$invalid" ng-click="joinChat(user)">
+				<span class="text-danger" ng-if="invalidKey">Not a valid key</span>
 		</form>
 		</div>
 	</div>

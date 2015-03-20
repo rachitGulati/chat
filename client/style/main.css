@@ -1,10 +1,11 @@
 *{
        line-height: normal !important;
+       font-family: 'Roboto', sans-serif;
       }
       body{
         background: #ffa500 !important;
         overflow-x: hidden;
-        overflow-y: auto: 
+        overflow-y: auto; 
       }
       .room{
         background: #fff;
@@ -54,6 +55,8 @@
       .chat_message{
         margin-bottom: 50px;
         list-style-type: none;
+        position: absolute;
+        width: 75%;
       }
       .chat_message li img {
         float: left;
@@ -63,7 +66,7 @@
       }
        
       .chat_message li p {
-        font: 200 12px/1.5 Georgia, Times New Roman, serif;
+        font-size: 20px;
          word-wrap: break-word;
          padding: 2px;
       }
@@ -191,6 +194,69 @@
 
 /*********END Loader*******************/
 
+/*********Chat Thread design**********/
+.chat_message:after {
+content: " ";
+background-color: #CCAF7A;
+position: absolute;
+display: block;
+width: 3px;
+top: 0px;
+left: 15px;
+bottom: 0;
+z-index: 1;
+}
+.chat_message:before {
+content: " ";
+background-color: #CCAF7A;
+position: absolute;
+display: block;
+width: 3px;
+top: 0px;
+right: -30px;
+bottom: 0;
+z-index: 1;
+}
+.smart-collaboration-icon {
+background: #C34E69;
+color: #fff;
+border-radius: 50%;
+position: absolute;
+width: 32px;
+height: 32px;
+line-height: 28px;
+font-size: 14px;
+text-align: center;
+left: -40px;
+top: 50%;
+z-index: 100;
+padding: 6px;
+}
+
+.smart-collaboration-icon-right {
+background: #54ce3c;
+color: #fff;
+border-radius: 50%;
+position: absolute;
+width: 32px;
+height: 32px;
+line-height: 28px;
+font-size: 14px;
+text-align: center;
+right: -45px;
+top: 50%;
+z-index: 100;
+padding: 6px;
+}
+
+.icon-flipped {
+transform: scaleX(-1) !important;
+-moz-transform: scaleX(-1) !important;
+-webkit-transform: scaleX(-1) !important;
+-ms-transform: scaleX(-1) !important;
+}
+
+/********* END Chat Thread design**********/
 /*********Animation****************/
 
 
