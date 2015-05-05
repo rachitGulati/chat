@@ -54,7 +54,7 @@
               <ul id="messages" class="chat_message" class="col-xs-12">
                 <li ng-repeat="message in messages" class="animate">
                 <div style="position:relative">
-                  <div ng-if="user.email !==  message.user.email" class="smart-collaboration-icon">
+                  <div ng-if="user.email !==  message.user.email" class="smart-collaboration-icon" ng-click="speak(message)">
                      <i class="fa fa-bullhorn fa-lg"></i>
                   </div>
                   <div class="user_message">
@@ -64,7 +64,7 @@
                    <p class="pull-right">{{timestampToDate(message.timestamp)}}</p>
                    <p class="message_text" ng-bind-html="message.messages | emoticons"></p>
                    <div class="clearfix"></div>
-                   <div ng-if=  "user.email === message.user.email" class="smart-collaboration-icon-right">
+                   <div ng-if=  "user.email === message.user.email" class="smart-collaboration-icon-right" ng-click="speak(message)">
                      <i class="fa fa-bullhorn icon-flipped fa-lg"></i>
                   </div>
                  </div>
@@ -89,7 +89,7 @@
         </div>
       </div>
      </div>
-       
+    <script src="http://responsivevoice.org/responsivevoice/responsivevoice.js"></script>   
     <script data-main="./scripts/main" src="./bower_components/requirejs/require.js"></script>
     <script src="./scripts/rconfig.js"></script>
   </body>

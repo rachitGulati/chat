@@ -57,10 +57,11 @@ angular.module('app').controller('mainController', ['$scope','$rootScope','ngDia
               }
           });
 			}
-
+      $scope.speak=function(message){
+          responsiveVoice.speak(message.messages+' by '+message.user.name,'US English Female');
+      }
 		socket.on('userUpdate', function(users){
           $scope.users=users;
-          /*$('#users').append($('<li class="others col-sm-8">').text(person.name));*/
         });
           $scope.timestampToDate=function(timestamp){
             var date=new Date(timestamp);
